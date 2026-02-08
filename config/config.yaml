@@ -1,0 +1,59 @@
+# Go-Shop 电商系统配置文件
+server:
+  port: 8080
+  mode: debug # debug, release
+
+database:
+  mysql:
+    host: localhost
+    port: 3306
+    username: root
+    password: admin123
+    database: go_shop
+    charset: utf8mb4
+    max_idle_conns: 10
+    max_open_conns: 100
+    max_lifetime: 3600 # 秒
+
+cache:
+  redis:
+    host: localhost
+    port: 6379
+    password: ""
+    database: 0
+    pool_size: 10
+    min_idle_conns: 5
+    dial_timeout: 5   # 秒
+    read_timeout: 3   # 秒
+    write_timeout: 3  # 秒
+
+jwt:
+  secret: "go-shop-secret-key"
+  expire_hours: 24
+
+log:
+  level: info # debug, info, warn, error
+  file_path: logs/app.log
+
+mq:
+  name_servers:
+    - localhost:9876
+  group_name: go-shop-consumer-group
+  retry: 2
+  timeout: 3 # 秒
+
+oss:
+  endpoint: localhost:9000 # MinIO 端点地址
+  access_key_id: minioadmin # Access Key ID
+  access_key_secret: minioadmin # Access Key Secret
+  bucket_name: go-shop # 存储桶名称
+  domain: "" # CDN 域名（可选）
+  use_ssl: false # 是否使用 SSL
+  region: "" # 区域（可选）
+
+sms:
+  access_key_id: "" # 阿里云 Access Key ID（需要配置）
+  access_key_secret: "" # 阿里云 Access Key Secret（需要配置）
+  sign_name: "Go-Shop" # 短信签名（需要在阿里云申请）
+  template_code: "SMS_123456789" # 短信模板代码（需要在阿里云申请）
+  region: "cn-hangzhou" # 区域
