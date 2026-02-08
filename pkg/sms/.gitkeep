@@ -1,0 +1,5 @@
+# SMS Service Package
+
+This directory contains the SMS service implementation for Go-Shop V2.
+
+See README.md for usage documentation.
